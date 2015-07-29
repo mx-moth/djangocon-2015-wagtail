@@ -16,6 +16,7 @@ class Command(BaseCommand):
         about = ContentPage(
             title='About',
             slug='about',
+            show_in_menus=True,
             body="""
             <h1>About PyCon Australia</h1>
             <p>PyCon Australia is the national conference for the Python Programming Community. The sixth PyCon Australia will be held from July 31st to August 4th, 2015 in Brisbane, bringing together professional, student and enthusiast developers with a love for developing with Python. PyCon Australia informs the country’s Python developers with presentations, tutorials and panel sessions by experts and core developers of Python, as well as the libraries and frameworks that they rely on.</p>
@@ -26,6 +27,7 @@ class Command(BaseCommand):
         team = ContentPage(
             title='Team',
             slug='team',
+            show_in_menus=True,
             body="""
                 <h1>Team</h1>
                 <h2>Organising team</h2>
@@ -44,6 +46,7 @@ class Command(BaseCommand):
         venue = ContentPage(
             title='Venue',
             slug='venue',
+            show_in_menus=True,
             body="""
                 <h1>Venue</h1>
                 <p>Our venue for 2015 is the Pullman Hotel, the largest combined hotel and conference centre located smack bang in the middle of the city.</p>

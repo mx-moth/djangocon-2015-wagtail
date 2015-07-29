@@ -1,0 +1,7 @@
+{% extends "internal_page.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block internal_content %}
+    {{ self.body|richtext }}
+{% endblock %}
