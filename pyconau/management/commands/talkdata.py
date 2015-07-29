@@ -9,6 +9,7 @@ from wagtail.wagtailimages.models import Image
 from wagtail.wagtailcore.models import Site
 
 from content.models import ContentPage
+from sponsors.models import Sponsor
 
 dirname = os.path.dirname
 here_dir = dirname(__file__)
@@ -29,6 +30,7 @@ class Command(BaseCommand):
 
         self.create_pages()
         self.populate_homepage()
+        self.create_sponsors()
 
     def create_pages(self):
         about = ContentPage(
@@ -92,6 +94,31 @@ class Command(BaseCommand):
         self.root_page.registrations_link = self.registrations
         self.root_page.sponsor_link = self.registrations
         self.root_page.save()
+
+    def create_sponsors(self):
+        Sponsor.objects.create(
+            name='Red Hat Asia Pacific',
+            url='https://redhat.com.au/',
+            level="1-platinum",
+            description="""
+                <p>Red Hat's mission is to be the catalyst in communities of customers, contributors, and partners creating better technology the open source way. Free and open source creates better software. That's why Red Hat collaborates to build better technology the open source way, regardless of where it is hosted or who started it. We collaborate, and the best technology wins. That's good -- not just for Red Hat, but for everyone.</p>
+                <p>Red Hat is proud to be an active supporter of PyCon Australia and a contributor to the Python Community.</p>
+            """,
+            image=Image.objects.create(
+                title="Red Hat logo",
+                file=self.get_standard_image("red_hat.png")))
+        Sponsor.objects.create(
+            name='Takeflight',
+            url='http://takeflight.com.au/',
+            level="2-gold",
+            description="""
+                <p>Takeflight are a team of web developers in Hobart, Tasmania. We create highly customised, engaging and innovative websites and web applications using Python, Django and Wagtail as our technologies of choice.</p>
+                <p>Our clients represent a broad range of industry sectors, such as education, government, tourism and science. We take pride in delivering stunning, responsive, accessible designs, and robust and secure systems.</p>
+                <p>We'll be around at PyCon AU, be sure to say hi!</p>
+            """,
+            image=Image.objects.create(
+                title="Takeflight lgoo",
+                file=self.get_standard_image("takeflight.png")))
 
     def get_standard_image(self, name):
         if not os.path.exists(images_dest_dir):

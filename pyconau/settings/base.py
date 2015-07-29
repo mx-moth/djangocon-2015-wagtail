@@ -51,6 +51,7 @@ INSTALLED_APPS = (
     'search',
     'home',
     'content',
+    'sponsors',
 )
 
 MIDDLEWARE_CLASSES = (
