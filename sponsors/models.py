@@ -36,3 +36,19 @@ class Sponsor(models.Model):
     def __str__(self):
         return self.name
 
+
+class SponsorPage(Page):
+    body = RichTextField()
+
+    content_panels = Page.content_panels + [
+        FieldPanel('body'),
+    ]
+
+    subpage_types = []
+
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request)
+        context.update({
+            'sponsors': Sponsor.objects.all().order_by('level', 'name'),
+        })
+        return context

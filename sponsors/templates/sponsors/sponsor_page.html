@@ -1,0 +1,17 @@
+{% extends "internal_page.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block internal_content %}
+    {{ self.body|richtext }}
+
+    {% regroup sponsors by get_level_display as level_sponsors %}
+    {% for group in level_sponsors %}
+        <h2>{{ group.grouper }}</h2>
+        {% for sponsor in group.list %}
+            <h3><a href="{{ sponsor.url }}">{{ sponsor.name }}</a></h3>
+            {{ sponsor.description|richtext }}
+        {% endfor %}
+        <hr>
+    {% endfor %}
+{% endblock %}

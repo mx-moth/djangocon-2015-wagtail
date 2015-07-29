@@ -9,7 +9,7 @@ from wagtail.wagtailimages.models import Image
 from wagtail.wagtailcore.models import Site
 
 from content.models import ContentPage
-from sponsors.models import Sponsor
+from sponsors.models import Sponsor, SponsorPage
 
 dirname = os.path.dirname
 here_dir = dirname(__file__)
@@ -85,6 +85,16 @@ class Command(BaseCommand):
             """)
         self.root_page.add_child(instance=self.registrations)
 
+        self.sponsors = SponsorPage(
+            title='Sponsors',
+            slug='sponsors',
+            show_in_menus=True,
+            body="""
+                <h1>Sponsors</h1>
+                <p>PyCon Australia gratefully acknowledges the support of our sponsors, without which the conference could not go ahead:</p>
+            """)
+        self.root_page.add_child(instance=self.sponsors)
+
     def populate_homepage(self):
         self.root_page.big_text = "PyCon Australia is the national conference for users of the Python programming language"
         self.root_page.banner_image = Image.objects.create(
@@ -92,7 +102,7 @@ class Command(BaseCommand):
             file=self.get_standard_image('banner-default.png'))
         self.root_page.registrations_open = True
         self.root_page.registrations_link = self.registrations
-        self.root_page.sponsor_link = self.registrations
+        self.root_page.sponsor_link = self.sponsors
         self.root_page.save()
 
     def create_sponsors(self):
