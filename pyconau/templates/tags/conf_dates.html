@@ -1,0 +1,12 @@
+<ul class="{{ class_name }}">
+    {% for event in schedule %}
+        <li><strong>{{ event.name }}</strong><br/>
+        {% if event.start_date == event.end_date %}
+            {{ event.start_date|date:"M j"  }}
+        {% elif event.start_date.month == event.end_date.month %}
+            {{ event.start_date|date:"M j" }}-{{ event.end_date|date:"j" }}
+        {% else %}
+            {{ event.start_date|date:"M j" }}-{{ event.end_date|date:"M j" }}
+        {% endif %}
+    {% endfor %}
+</ul>

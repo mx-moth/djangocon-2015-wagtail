@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% load pyconau_tags %}
+
+{% block content %}
+
+<div class="internal-banner">
+    <div class="container">
+        <div class="cta offset-by-three">
+            <a href="/person/new" class="button large register">Create Account</a>
+            <ul class="conf-dates">
+                <li><strong>Mini-Conferences</strong><br/>July 31</li>
+                <li><strong>Presentations</strong><br/>August 1-2</li>
+                <li class="last"><strong>Sprints</strong><br/>August 3-4</li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="three columns">
+
+        <div class="sidebar-module">
+            <nav class="sidebar-menu">
+                {% side_menu self %}
+            </nav>
+        </div>
+
+        <div class="sidebar-module loop">
+            <h3 class="sidebar-title">Stay in the loop</h3>
+            <ul class="stay-in-touch fa-ul">
+                <li><i class="fa-li fa fa-rss"></i> <a href="/media/news/rss">RSS News Feed</a></li>
+                <li><i class="fa-li fa fa-envelope"></i> <a href="http://lists.linux.org.au/listinfo/pycon-au-announce">Announcements Mailing List</a></li>
+                <li><i class="fa-li fa fa-twitter"></i> <a href="http://twitter.com/pyconau">@pyconau Twitter</a></li>
+                <li><i class="fa-li fa fa-comments"></i> <a href="irc://irc.freenode.net/pyconau"><tt>irc.freenode.net/#pyconau</tt></a></li>
+                <li><i class="fa-li fa fa-google-plus"></i> <a href="http://plus.google.com/+PyConAU">Google+</a></li>
+                <li><i class="fa-li fa fa-facebook"></i> <a href="http://www.facebook.com/PyConAustralia">Facebook</a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-module news">
+            <h3 class="sidebar-title">Latest News</h3>
+            <div class="news-titles">
+                <ul>
+                    <li><a href="/media/news/39">Teacher assistance program</a><br />24 July 2015</li>
+                    <li><a href="/media/news/38">Keynote Speaker: Carrie Anne Philbin</a><br />13 July 2015</li>
+                    <li><a href="/media/news/37">Keynote: Carina C. Zona</a><br />28 June 2015</li>
+                    <li><a href="/media/news/36">Programme Released</a><br />24 June 2015</li>
+                </ul>
+                <a href="/media/news">More News...</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="seven columns">
+        <div class="internal-content">
+        {% block internal_content %}
+        {% endblock %}
+        </div>
+    </div>
+
+    <div class="two columns">
+
+       <div class="sidebar-logos">
+            <a href="http://au.redhat.com">
+            <img src="http://2015.pycon-au.org/img/logos/red_hat.png" alt="Red Hat" class="scale-with-grid" />
+            </a>
+            <a href="http://netboxblue.com">
+            <img src="http://2015.pycon-au.org/img/logos/netbox_blue.png" alt="Netbox Blue" class="scale-with-grid" />
+            </a>
+            <a href="http://google.com.au">
+            <img src="http://2015.pycon-au.org/img/logos/google.png" alt="Google Australia" class="scale-with-grid" />
+            </a>
+            <a href="http://www.asd.gov.au/">
+            <img src="http://2015.pycon-au.org/img/logos/asd.jpg" alt="Australian Signals Directorate" class="scale-with-grid" />
+            </a>
+            <a href="http://takeflight.com.au/">
+            <img src="http://2015.pycon-au.org/img/logos/takeflight.png" alt="Takeflight" class="scale-with-grid" />
+            </a>
+            <a href="http://iress.com.au/">
+            <img src="http://2015.pycon-au.org/img/logos/iress.png" alt="IRESS Australia" class="scale-with-grid" />
+            </a>
+        </div>
+    </div>
+
+    <div class="clearfix"></div>
+</div>
+{% endblock %}

@@ -1,0 +1,4 @@
+<li class="{% if current_page.url == '/' %}active{% endif %}"><a href="/">Home</a></li>
+{% for child in root_page.get_children %}
+<li class="{% if current_page.url == child.url %}active{% endif %}"><a href="{{ child.url }}">{{ child.title }}</a></li>
+{% endfor %}

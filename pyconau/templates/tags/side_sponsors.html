@@ -1,0 +1,7 @@
+{% load wagtailimages_tags %}
+
+{% for sponsor in sponsors %}
+    <a href="{{ sponsor.url }}">
+        {% image sponsor.image width-177 class="scale-with-grid" %}
+    </a>
+{% endfor %}
