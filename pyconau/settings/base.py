@@ -50,6 +50,7 @@ INSTALLED_APPS = (
     'pyconau',
     'search',
     'home',
+    'content',
 )
 
 MIDDLEWARE_CLASSES = (
