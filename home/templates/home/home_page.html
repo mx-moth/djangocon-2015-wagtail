@@ -1,13 +1,14 @@
 {% extends "base.html" %}
 
-{% block body_class %}template-{{ self.get_verbose_name|slugify }}{% endblock %}
+{% load wagtailimages_tags %}
 
 {% block content %}
+
 <div class="banner">
     <div class="container">
         <div class="cta">
             <div class="padding">
-                <h1>PyCon Australia is the national conference for users of the Python programming language</h1>
+                <h1>{{ self.big_text }}</h1>
                 <ul class="conf-dates">
                     <li><strong>Mini-Conferences</strong><br/>July 31</li>
                     <li><strong>Presentations</strong><br/>August 1-2</li>
@@ -18,30 +19,34 @@
             </div>
         </div>
     </div>
-    <span data-picture data-alt="Banner Image" class="banner-bg">
 
-        <span data-src="http://2015.pycon-au.org/img/banner-768.png" data-media="(min-width: 401px)"></span>
-        <span data-src="http://2015.pycon-au.org/img/banner-900.png" data-media="(min-width: 769px)"></span>
-        <span data-src="http://2015.pycon-au.org/img/banner-1170.png" data-media="(min-width: 901px)"></span>
-        <span data-src="http://2015.pycon-au.org/img/banner-default.png" data-media="(min-width: 1171px)"></span>
+    <span data-picture data-alt="Banner Image" class="banner-bg">
+        {% image self.banner_image width-768 as small_banner %}
+        {% image self.banner_image width-900 as medium_banner %}
+        {% image self.banner_image width-1170 as large_banner %}
+        {% image self.banner_image original as huge_banner %}
+
+        <span data-src="{{ small_banner.url }}" data-media="(min-width: 401px)"></span>
+        <span data-src="{{ medium_banner.url }}" data-media="(min-width: 769px)"></span>
+        <span data-src="{{ large_banner.url }}" data-media="(min-width: 901px)"></span>
+        <span data-src="{{ huge_banner.url }}" data-media="(min-width: 1171px)"></span>
 
         <noscript>
-            <img src="http://2015.pycon-au.org/img/banner-default.png" alt="PyCon AU 2014">
+            <img src="{{ huge_banner.url }}" alt="PyCon AU 2014">
         </noscript>
     </span>
 </div>
 
-<div class="important-news">
-    <div class="container">
-        <h2>Registrations are now open!</h2>
-        <a href="/register/prices" class="button">Find out More</a>
+{% if self.registrations_open %}
+    <div class="important-news">
+        <div class="container">
+            <h2>Registrations are now open!</h2>
+            <a href="{{ self.registrations_link.url }}" class="button">Find out More</a>
+        </div>
     </div>
-</div>
-
+{% endif %}
 
 <div class="container">
-
-
     <!-- Sponsors -->
     <h2 class="home-h2">Sponsors</h2>
 
@@ -193,10 +198,10 @@
                 <span>Become a sponsor!</span>
             </a>
         </div>
-
     </div>
+
     <div class="content-cta centered">
-        <a href="/sponsors/sponsors" class="button large">Sponsor PyCon Australia</a>
+        <a href="{{ self.sponsor_link.url }}" class="button large">Sponsor PyCon Australia</a>
     </div>
 
     <!-- News-->
@@ -324,13 +329,13 @@ The full schedule for PyCon Australia 2015 can be found at <a href="http://2015.
 
     <div class="three columns">
         <ul class="stay-in-touch fa-ul">
-            <li><i class="fa-li fa fa-rss"></i> <a href="/media/news/rss">RSS News Feed</a></li>
-            <li><i class="fa-li fa fa-envelope"></i> <a href="http://lists.linux.org.au/listinfo/pycon-au-announce">Announcements Mailing List</a></li>
-            <li><i class="fa-li fa fa-twitter"></i> <a href="http://twitter.com/pyconau">@pyconau Twitter</a></li>
-            <li><i class="fa-li fa fa-comments"></i> <a href="irc://irc.freenode.net/pyconau"><tt>irc.freenode.net/#pyconau</tt></a></li>
-            <li><i class="fa-li fa fa-google-plus"></i> <a href="http://plus.google.com/+PyConAU">Google+</a></li>
-            <li><i class="fa-li fa fa-facebook"></i> <a href="http://www.facebook.com/PyConAustralia">Facebook</a></li>
-        </ul>
+<li><i class="fa-li fa fa-rss"></i> <a href="/media/news/rss">RSS News Feed</a></li>
+<li><i class="fa-li fa fa-envelope"></i> <a href="http://lists.linux.org.au/listinfo/pycon-au-announce">Announcements Mailing List</a></li>
+<li><i class="fa-li fa fa-twitter"></i> <a href="http://twitter.com/pyconau">@pyconau Twitter</a></li>
+<li><i class="fa-li fa fa-comments"></i> <a href="irc://irc.freenode.net/pyconau"><tt>irc.freenode.net/#pyconau</tt></a></li>
+<li><i class="fa-li fa fa-google-plus"></i> <a href="http://plus.google.com/+PyConAU">Google+</a></li>
+<li><i class="fa-li fa fa-facebook"></i> <a href="http://www.facebook.com/PyConAustralia">Facebook</a></li>
+</ul>
     </div>
     <div class="clearfix"></div>
 
@@ -367,4 +372,5 @@ The full schedule for PyCon Australia 2015 can be found at <a href="http://2015.
 
     <div class="clearfix"></div>
 </div>
+
 {% endblock %}
