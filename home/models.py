@@ -8,6 +8,8 @@ from wagtail.wagtailadmin.edit_handlers import (
 
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 
+from sponsors.models import Sponsor
+
 
 class HomePage(Page):
 
@@ -36,3 +38,10 @@ class HomePage(Page):
     ]
 
     parent_page_types = []
+
+    def get_context(self, request):
+        context = super().get_context(request)
+        context.update({
+            'sponsors': Sponsor.objects.all().order_by('level', 'name'),
+        })
+        return context
