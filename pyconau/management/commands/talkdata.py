@@ -5,6 +5,7 @@ import shutil
 from django.conf import settings
 from django.core.management import BaseCommand
 from django.contrib.auth.models import User
+from django.utils import timezone
 
 from wagtail.wagtailimages.models import Image
 from wagtail.wagtailcore.models import Site
@@ -12,6 +13,7 @@ from wagtail.wagtailcore.models import Site
 from content.models import ContentPage
 from sponsors.models import Sponsor, SponsorPage
 from schedule.models import Event
+from news.models import NewsIndex, NewsItem
 
 dirname = os.path.dirname
 here_dir = dirname(__file__)
@@ -34,6 +36,7 @@ class Command(BaseCommand):
         self.populate_homepage()
         self.create_sponsors()
         self.create_schedule()
+        self.create_news()
 
     def create_pages(self):
         about = ContentPage(
@@ -98,6 +101,12 @@ class Command(BaseCommand):
             """)
         self.root_page.add_child(instance=self.sponsors)
 
+        self.newsindex = NewsIndex(
+            title='Media',
+            slug='media',
+            show_in_menus=True)
+        self.root_page.add_child(instance=self.newsindex)
+
     def populate_homepage(self):
         self.root_page.big_text = "PyCon Australia is the national conference for users of the Python programming language"
         self.root_page.banner_image = Image.objects.create(
@@ -146,6 +155,25 @@ class Command(BaseCommand):
             name='Sprints',
             start_date=datetime.date(2015, 8, 3),
             end_date=datetime.date(2015, 8, 4))
+
+    def create_news(self):
+        NewsItem.objects.create(
+            newsindex=self.newsindex,
+            date=datetime.datetime(2015, 7, 24, 17, 42, tzinfo=timezone.get_current_timezone()),
+            title='Teacher assistance program',
+            body="""
+                <p>As part of Carrie Anne Philbin’s keynote announcement last week, we also announced the availability of financial assistance grants for qualified primary and secondary teachers wishing to attend the Python in Education Miniconf on July 31st.</p>
+                <p>Teachers that are interested in attending the Python in Education Miniconf, but face financial barriers to doing so, are strongly encouraged to apply for financial assistance.</p>
+                <p>These grants are made possible by the generous contributions of the Python Software Foundation and Code Club Australia, and are designed to make it easier for teachers to justify attending an education focused event hosted by a software development conference. As such, teachers may apply not only for assistance with registration, travel, and accommodation costs as described for the regular financial assistance program, but also a contribution of up to $360 towards the costs of hiring a substitute teacher for the day.</p>
+            """)
+        NewsItem.objects.create(
+            newsindex=self.newsindex,
+            date=datetime.datetime(2015, 7, 13, 16, 17, tzinfo=timezone.get_current_timezone()),
+            title='Keynote Speaker: Carrie Anne Philbin',
+            body="""
+                <p>Following on from 2014's inspirational keynote advocating Python for Every Child in Australia as part of the rollout of the Australian Digital Curriculum, this year sees PyCon Australia playing host to its first ever Python in Education miniconf. As part of that event, we are thrilled to announce our second PyCon Australia 2015 keynote speaker: Carrie Anne Philbin, Education Pioneer at the Raspberry Pi Foundation, chair of the UK's Computing at School's #include initiative, author of "Adventures in Raspberry Pi", and a member of the Board of Directors for the Python Software Foundation.</p>
+                <p>As an award winning secondary Computing & ICT teacher, Carrie Anne is a vocal advocate for the merits of Python as an educational tool, and brings to PyCon Australia a wealth of experience with the UK's search for a suitable text based programming language to serve as a follow on from self-contained visual programming environments like Scratch.</p>
+            """)
 
     def get_standard_image(self, name):
         if not os.path.exists(images_dest_dir):

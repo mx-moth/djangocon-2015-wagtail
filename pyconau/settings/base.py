@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'wagtail.wagtailembeds',
     'wagtail.wagtailredirects',
     'wagtail.wagtailforms',
+    'wagtail.contrib.wagtailroutablepage',
 
     'pyconau',
     'search',
@@ -53,6 +54,8 @@ INSTALLED_APPS = (
     'content',
     'sponsors',
     'schedule',
+    'news',
+    'wagtailnews',
 )
 
 MIDDLEWARE_CLASSES = (

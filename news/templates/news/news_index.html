@@ -1,0 +1,15 @@
+{% extends "internal_page.html" %}
+
+{% load wagtailcore_tags wagtailroutablepage_tags %}
+
+{% block internal_content %}
+<h1>PyCon Australia 2015 News</h1>
+
+{% for newsitem in newsitem_list %}
+    <h2><a href="{{ newsitem.url }}">{{ newsitem.title }}</a></h2>
+    <p class="submitted">Submitted on {{ newsitem.date|date:"Y-m-d H:i" }}</p>
+    {{ newsitem.body|richtext }}
+    <hr>
+{% endfor %}
+
+{% endblock %}

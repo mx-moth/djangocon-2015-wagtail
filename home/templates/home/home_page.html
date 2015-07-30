@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailimages_tags pyconau_tags %}
+{% load wagtailcore_tags wagtailimages_tags pyconau_tags %}
 
 {% block content %}
 
@@ -67,123 +67,15 @@
     <h2 class="home-h2">News</h2>
 
     <div class="nine columns">
+        {% for newsitem in newsitems %}
             <article class="homepage-news">
-<p class="date">24&nbsp;July&nbsp;2015</p>
-<div class="article-body">
-    <h4 class="news-title"><a href="/media/news/39">Teacher assistance program</a></h4>
-    
-    
-<p>
-As part of Carrie Anne Philbin’s keynote announcement 
-<a href="http://2015.pycon-au.org/media/news/38">last week</a>, we
-also announced the availability of financial assistance grants for
-qualified primary and secondary teachers wishing to attend the 
-<a href="http://2015.pycon-au.org/media/news/35">Python in Education
-Miniconf</a> on July 31st.
-</p>
-
-<p>
-Teachers that are interested in attending the Python in Education
-Miniconf, but face financial barriers to doing so, are strongly
-encouraged to <a href="https://docs.google.com/forms/d/1UrzgmIcXl499ifJglEXxKQW3oF9gHcKF1TN4a13-ZyI/viewform">apply for financial assistance.</a>
-</p>
-
-<p>
-These grants are made possible by the generous contributions of the
-Python Software Foundation and Code Club Australia, and are designed
-to make it easier for teachers to justify attending an education
-focused event hosted by a software development conference. As such,
-teachers may apply not only for assistance with registration, travel,
-and accommodation costs as described for the
-regular <a href="http://2015.pycon-au.org/grants">financial assistance
-program</a>, but also a contribution of up to $360 towards the costs
-of hiring a substitute teacher for the day.
-</p>
-
-</div>
-<div class="clearfix"></div>
-</article>
-<article class="homepage-news">
-<p class="date">13&nbsp;July&nbsp;2015</p>
-<div class="article-body">
-    <h4 class="news-title"><a href="/media/news/38">Keynote Speaker: Carrie Anne Philbin</a></h4>
-    
-    <p>Following on from 2014's inspirational keynote
-advocating <a href="https://www.youtube.com/watch?v=iVv7fCwVbp4">Python
-for Every Child in Australia</a> as part of the rollout of the
-Australian Digital Curriculum, this year sees PyCon Australia playing
-host to its first
-ever <a href="http://2015.pycon-au.org/media/news/35"> Python in
-Education</a> miniconf. As part of that event, we are thrilled to
-announce our second PyCon Australia 2015 keynote speaker: Carrie Anne
-Philbin, Education Pioneer at
-the <a href="https://www.raspberrypi.org/"> Raspberry Pi
-Foundation</a>, chair of the UK's <a href=
-"http://casinclude.org.uk/">Computing at School's #include</a>
-initiative, author
-of <a href="https://www.raspberrypi.org/carrie-anne-philbins-adventures-in-raspberry-pi">
-"Adventures in Raspberry Pi"</a>, and a member of the Board of
-Directors for the <a href="https://www.python.org/psf/mission/">Python Software Foundation</a>.</p>
-<p></p>
-<p>As an award winning secondary Computing &amp;
-ICT teacher, Carrie Anne is a vocal advocate for the merits of
-Python as an educational tool, and brings to PyCon Australia a
-wealth of experience with the UK's search for a suitable text
-based programming language to serve as a follow on from
-self-contained visual programming environments like
-Scratch.</p>
-
-       &hellip; <a href="/media/news/38">more</a>
-</div>
-<div class="clearfix"></div>
-</article>
-<article class="homepage-news">
-<p class="date">28&nbsp;June&nbsp;2015</p>
-<div class="article-body">
-    <h4 class="news-title"><a href="/media/news/37">Keynote: Carina C. Zona</a></h4>
-    
-    <p>Last week, we revealed the programme schedule for Pycon Australia 2015 (<a href="//2015.pycon-au.org/programme/about"><tt>2015.pycon-au.org/programme/about</tt></a>). This week, it's our pleasure to announce the first of our keynote speakers for 2015, Carina C. Zona, the founder of <a href="https://twitter.com/CallbackWomen">@CallbackWomen</a>, an initiative that aims to reduce the well-documented gender disparity in speaker line-ups at programming conferences.
-</p><p>
-For some time now, through <a href="https://storify.com/cczona/schemas-for-the-real-world">Schemas for the Real World</a> Carina has been advocating for developers to address the ways that seemingly incidental details of how we structure our data models can have real and lasting impacts on the way people experience the software-mediated world around them.
-</p><p>
-This year, she is taking on a new challenge, and asking us to reflect seriously on the "Consequences of an Insightful Algorithm". In this era of large data sets, and rich analytical tools, we’re able to extract remarkably precise intuitions about individuals from seemingly innocuous information. But do we have a right to know details that users didn’t consent to share, even when they willingly shared the data that leads us to a particular conclusion?
-</p><p>
-What are our obligations to people who did not expect themselves to be so intimately known without sharing directly? How do we mitigate against unintended outcomes, as when a major social network inadvertently triggered painful memories for grieving families who’d recently experienced the death of their child or other loved ones?
-</p><p>
-As Carina puts it, "We design software for humans. Balancing human needs and business specs can be tough. It’s crucial that we learn how to build in systematic empathy."
-</p><p>
-Carina is a developer, community manager, advocate, certified sex educator, and whimsical gluten-free baker. She has been an organizer & instructor for many tech women’s organizations, including formerly serving on Railsbridge’s core team, and has given talks at more than 20 technical conferences among the Python, Ruby, JavaScript, and PHP communities.
-</p><p>
-She spends a lot of time thinking about the unexpected cultural effects of our decisions as programmers.
-</p><p>
-We can't wait to hear Carina's keynote and we are sure you will enjoy it as well.
-</p><p>
-PyCon Australia has endeavoured to keep tickets as affordable as possible. We are able to do so, thanks to our Sponsors and Contributors. Registrations for PyCon Australia 2015 are now open, with prices starting at AU$50 for students, and tickets for the general public starting at AU$240. All prices include GST, and more information can be found at http://2015.pycon-au.org/register/prices
-</p>
-</div>
-<div class="clearfix"></div>
-</article>
-<article class="homepage-news">
-<p class="date">24&nbsp;June&nbsp;2015</p>
-<div class="article-body">
-    <h4 class="news-title"><a href="/media/news/36">Programme Released</a></h4>
-    
-    <p>PyCon Australia is proud to release our programme for 2015, spread over the weekend of August  1st and 2nd, following our Miniconfs on Friday 31 July.<p>
-<p>
-Following our largest ever response to our Call for Proposals, we are able to present two keynotes, forty eight talks and two tutorials. The conference will feature four full tracks of presentations, covering all aspects of the Python ecosystem, presented by experts and core developers of key Python technology. Our presenters cover a broad range of backgrounds, including industry, research, government and academia.
-</p>
-<p>
-We are still finalising our Miniconf timetable, but we expect another thirty talks for Friday. We'd like to highlight the inaugural running of the Education Miniconf whose primary aim is to bring educators and the Python community closer together.</p>
-
-<p>
-The full schedule for PyCon Australia 2015 can be found at <a href="http://2015.pycon-au.org/programme/about"><tt>http://2015.pycon-au.org/programme/about</tt></a></p>
-
-
-       &hellip; <a href="/media/news/36">more</a>
-</div>
-<div class="clearfix"></div>
-</article>
-
+            <p class="date">{{ newsitem.date|date:"d F Y" }}</p>
+            <div class="article-body">
+            {{ newsitem.body|richtext }}
+            </div>
+            <div class="clearfix"></div>
+            </article>
+        {% endfor %}
     </div>
 
     <div class="three columns">

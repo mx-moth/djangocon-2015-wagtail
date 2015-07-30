@@ -1,0 +1,9 @@
+{% extends "internal_page.html" %}
+
+{% load wagtailcore_tags %}
+
+{% block internal_content %}
+<h1>{{ newsitem.title }}</h1>
+<p class="submitted">Submitted on {{ newsitem.date|date:"Y-m-d H:i" }}</p>
+{{ newsitem.body|richtext }}
+{% endblock %}

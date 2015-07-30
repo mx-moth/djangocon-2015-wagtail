@@ -9,6 +9,7 @@ from wagtail.wagtailadmin.edit_handlers import (
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 
 from sponsors.models import Sponsor
+from news.models import NewsItem
 
 
 class HomePage(Page):
@@ -43,5 +44,6 @@ class HomePage(Page):
         context = super().get_context(request)
         context.update({
             'sponsors': Sponsor.objects.all().order_by('level', 'name'),
+            'newsitems': NewsItem.objects.all()[:5],
         })
         return context
