@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load wagtailimages_tags %}
+{% load wagtailimages_tags pyconau_tags %}
 
 {% block content %}
 
@@ -9,11 +9,7 @@
         <div class="cta">
             <div class="padding">
                 <h1>{{ self.big_text }}</h1>
-                <ul class="conf-dates">
-                    <li><strong>Mini-Conferences</strong><br/>July 31</li>
-                    <li><strong>Presentations</strong><br/>August 1-2</li>
-                    <li><strong>Sprints</strong><br/>August 3-4</li>
-                </ul>
+                {% conf_dates %}
                 <a href="/person/new" class="button large">Create Account</a>
                 <a href="/person/signin" class="button large grey">Login</a>
             </div>

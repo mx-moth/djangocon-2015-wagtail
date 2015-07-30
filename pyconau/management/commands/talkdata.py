@@ -1,3 +1,4 @@
+import datetime
 import os
 import shutil
 
@@ -10,6 +11,7 @@ from wagtail.wagtailcore.models import Site
 
 from content.models import ContentPage
 from sponsors.models import Sponsor, SponsorPage
+from schedule.models import Event
 
 dirname = os.path.dirname
 here_dir = dirname(__file__)
@@ -31,6 +33,7 @@ class Command(BaseCommand):
         self.create_pages()
         self.populate_homepage()
         self.create_sponsors()
+        self.create_schedule()
 
     def create_pages(self):
         about = ContentPage(
@@ -129,6 +132,20 @@ class Command(BaseCommand):
             image=Image.objects.create(
                 title="Takeflight lgoo",
                 file=self.get_standard_image("takeflight.png")))
+
+    def create_schedule(self):
+        Event.objects.create(
+            name='Mini-Conferences',
+            start_date=datetime.date(2015, 7, 31),
+            end_date=datetime.date(2015, 7, 31))
+        Event.objects.create(
+            name='Presentations',
+            start_date=datetime.date(2015, 8, 1),
+            end_date=datetime.date(2015, 8, 2))
+        Event.objects.create(
+            name='Sprints',
+            start_date=datetime.date(2015, 8, 3),
+            end_date=datetime.date(2015, 8, 4))
 
     def get_standard_image(self, name):
         if not os.path.exists(images_dest_dir):
